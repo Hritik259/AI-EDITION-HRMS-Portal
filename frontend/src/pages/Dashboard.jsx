@@ -3,6 +3,7 @@ import { Users, UserCheck, UserX, Clock, TrendingUp, Zap, ChevronRight, AlertTri
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 import StatCard from '../components/StatCard'
 import api from '../api/axios'
+import { Link } from "react-router-dom"
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -184,9 +185,9 @@ export default function Dashboard() {
               <h3 className="text-base font-semibold text-white">Recent Employees</h3>
               <p className="text-xs text-gray-500 mt-0.5">Latest team members added</p>
             </div>
-            <a href="/employees" className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
+            <Link href="/employees" className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
               View all <ChevronRight size={12} />
-            </a>
+            </Link>
           </div>
           <div className="space-y-3">
             {stats?.recent_employees?.length === 0 && (
@@ -228,7 +229,7 @@ export default function Dashboard() {
                 { label: 'Manage Employees', sub: 'Add or update records', href: '/employees', color: '#6366f1' },
                 { label: 'Mark Attendance',  sub: 'Daily check-in',         href: '/attendance', color: '#10b981' },
               ].map(a => (
-                <a key={a.label} href={a.href}
+                <Link key={a.label} href={a.href}
                   className="flex items-center justify-between p-3 rounded-xl transition-all hover:bg-white/5 group"
                   style={{ border: '1px solid #1e1e30' }}>
                   <div className="flex items-center gap-3">
@@ -242,7 +243,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <ChevronRight size={14} className="text-gray-600 group-hover:text-gray-400 transition-colors" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
